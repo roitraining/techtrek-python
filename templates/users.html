@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Management</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>User Management</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Birthdate</th>
+        <th>Salary</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{ user['id'] }}</td>
+        <td>{{ user['first_name'] }}</td>
+        <td>{{ user['last_name'] }}</td>
+        <td>{{ user['birthdate'] }}</td>
+        <td>{{ user['salary'] }}</td>
+        <td>
+          <a href="{{ url_for('update', id=user['id']) }}">Update</a>
+          <a href="{{ url_for('delete', id=user['id']) }}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+  <a href="{{ url_for('insert') }}">Insert New User</a>
+</body>
+</html>

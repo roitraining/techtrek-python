@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To Do List</title>
+</head>
+<body>
+  <h1>{{message}}</h1>
+  <form method="POST">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title">
+    <button type="submit" name="action" value="delete">Delete Item</button>
+    <button type="submit" name="action" value="create">Add to List</button>
+  </form>
+  <h1>To Do List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Completed</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in data %}
+      <tr>
+        <td><a href=""><button value="{{ item['id'] }}">Delete</button></a></td>
+        <td>{{ item['id'] }}</td>
+        <td>{{ item['title'] }}</td>
+        <td>{{ item['completed'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
